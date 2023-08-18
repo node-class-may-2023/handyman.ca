@@ -20,6 +20,14 @@ app.use(
 )
 app.use(express.static('public'))
 
+app.get('/login', renderLogin)
+app.post('/login', handleLogin)
+
+app.get('/register', renderRegister)
+app.post('/register', handleRegister)
+
+app.post('logout', handleLogout)
+
 app.get('*', (req, res) => {
   res.status(404).send('Not Found')
 })
