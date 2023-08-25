@@ -1,0 +1,20 @@
+<%- include('header') %>
+<form action="/login" method="POST">
+
+	<% if(locals.errorMessage) { %>
+	<p class="error-msg"> <%= locals.errorMessage %></p>
+	<% } %>
+
+	<section class="input-group">
+		<label for="email">Email</label>
+		<input type="email" id="email" name="email" required>
+	</section>
+
+	<section class="input-group">
+		<label for="password">Password</label>
+		<input type="password" id="password" name="password" required>
+	</section>
+
+	<input type="submit" value="Login">
+</form>
+<%- include('footer') %>

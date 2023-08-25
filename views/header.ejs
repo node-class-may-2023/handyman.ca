@@ -10,6 +10,21 @@
 
 <body>
 	<header>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/service-request">Service Request</a></li>
+			</ul>
+			<ul>
+				<% if (!locals.loggedInUser) { %>
+				<li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li>
+				<% } else { %>
+				<li>Hello, <%= locals.loggedInUser.firstName %></li>
+				<li><a href="/logout">Logout</a></li>
+				<% } %>
+			</ul>
+		</nav>
 
 	</header>
 	<main>

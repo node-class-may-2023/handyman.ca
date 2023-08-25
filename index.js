@@ -6,6 +6,8 @@ const cors = require('cors')
 const express = require('express')
 const mongoose = require('mongoose')
 
+const { auth } = require('./middleware/auth')
+
 const {
   renderRegister,
   handleRegister,
@@ -28,13 +30,24 @@ app.use(
 )
 app.use(express.static('public'))
 
+app.get('/', (req, res) => {
+  res.render('home')
+})
+
 app.get('/register', renderRegister)
 app.post('/register', handleRegister)
 
 app.get('/login', renderLogin)
 app.post('/login', handleLogin)
 
-app.post('logout', handleLogout)
+app.get('/logout', handleLogout)
+
+app.use(auth)
+
+app.get('/service-request', (req, res) => {
+  const { loggedInUser } = req
+  res.render('service-request', { loggedInUser })
+})
 
 app.get('*', (req, res) => {
   res.status(404).send('Not Found')

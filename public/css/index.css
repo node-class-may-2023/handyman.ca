@@ -25,3 +25,17 @@ label {
   padding: 1rem;
   margin: 1rem;
 }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul > li {
+  list-style: none;
+}
+
+nav > ul {
+  display: flex;
+  gap: 1rem;
+}

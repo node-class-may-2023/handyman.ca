@@ -6,8 +6,10 @@
 	<% } %>
 
 	<% if(locals.successMessage) { %>
-	<p class="success-msg"> <%= locals.successMessage %></p>
-	<p>Process to login <a href="/login">here</a></p>
+	<section class="success-msg">
+		<p> <%= locals.successMessage %></p>
+		<p>Process to login <a href="/login">here</a></p>
+	</section>
 	<% } %>
 
 	<section class="input-group">
