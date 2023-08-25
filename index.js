@@ -6,6 +6,14 @@ const cors = require('cors')
 const express = require('express')
 const mongoose = require('mongoose')
 
+const {
+  renderRegister,
+  handleRegister,
+  renderLogin,
+  handleLogin,
+  handleLogout
+} = require('./controllers/user.controller')
+
 const app = express()
 const PORT = process.env.PORT
 
@@ -20,11 +28,11 @@ app.use(
 )
 app.use(express.static('public'))
 
-app.get('/login', renderLogin)
-app.post('/login', handleLogin)
-
 app.get('/register', renderRegister)
 app.post('/register', handleRegister)
+
+app.get('/login', renderLogin)
+app.post('/login', handleLogin)
 
 app.post('logout', handleLogout)
 

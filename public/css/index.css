@@ -1,0 +1,27 @@
+main {
+  width: 80%;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+}
+
+label {
+  margin-right: 1rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.error-msg {
+  color: red;
+  background-color: lightpink;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.success-msg {
+  color: green;
+  background-color: lightgreen;
+  padding: 1rem;
+  margin: 1rem;
+}

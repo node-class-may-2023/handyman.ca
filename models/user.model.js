@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'user email is required'],
     unique: true,
-    minLength: 5,
+    minLength: 4,
     maxLength: 128,
     match: [/^\S+@\S+$/g, 'invalid email format']
     // regex - someCharacters@someOtherCharacters

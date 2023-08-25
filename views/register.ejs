@@ -1,0 +1,45 @@
+<%- include('header') %>
+<form action="/register" method="POST">
+
+	<% if(locals.errorMessage) { %>
+	<p class="error-msg"> <%= locals.errorMessage %></p>
+	<% } %>
+
+	<% if(locals.successMessage) { %>
+	<p class="success-msg"> <%= locals.successMessage %></p>
+	<p>Process to login <a href="/login">here</a></p>
+	<% } %>
+
+	<section class="input-group">
+		<label for="email">Email</label>
+		<input type="email" id="email" name="email" minlength="4" maxlength="128" required>
+	</section>
+
+	<section class="input-group">
+		<label for="password">Password</label>
+		<input type="password" id="password" name="password" minlength="4" maxlength="128" required>
+	</section>
+
+	<section class="input-group">
+		<label for="first-name">First Name</label>
+		<input type="text" id="fname" name="firstName" minlength="4" maxlength="128" required>
+	</section>
+
+	<section class="input-group">
+		<label for="last-name">Last Name</label>
+		<input type="text" id="lname" name="lastName" minlength="4" maxlength="128" required>
+	</section>
+
+	<section class="input-group">
+		<label for="address">Address</label>
+		<input type="text" id="address" name="address" minlength="10" maxlength="128" required>
+	</section>
+
+	<section class="input-group">
+		<label for="phone">Phone Number</label>
+		<input type="text" id="phone" name="phoneNumber" minlength="7" maxlength="16" required>
+	</section>
+
+	<input type="submit" value="Register">
+</form>
+<%- include('footer') %>
