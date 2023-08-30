@@ -6,7 +6,7 @@ const cors = require('cors')
 const express = require('express')
 const mongoose = require('mongoose')
 
-const { auth } = require('./middleware/auth')
+const { auth, adminAuth } = require('./middleware/auth');
 
 const {
   renderRegister,
@@ -16,38 +16,44 @@ const {
   handleLogout
 } = require('./controllers/user.controller')
 
-const app = express()
-const PORT = process.env.PORT
+const {
+  renderServiceRequest,
+  handleServiceRequest,
+  renderAdminDashboard
+} = require('./controllers/serviceRequest.controller');
 
-app.set('view engine', 'ejs')
-app.use(cors())
-app.use(cookieParser())
-app.use(express.json())
+const app = express();
+const PORT = process.env.PORT;
+
+app.set('view engine', 'ejs');
+app.use(cors());
+app.use(cookieParser());
+app.use(express.json());
 app.use(
   bodyParser.urlencoded({
     extended: true
   })
-)
-app.use(express.static('public'))
+);
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.render('home')
-})
+  res.render('home');
+});
 
-app.get('/register', renderRegister)
-app.post('/register', handleRegister)
+app.get('/register', renderRegister);
+app.post('/register', handleRegister);
 
-app.get('/login', renderLogin)
-app.post('/login', handleLogin)
+app.get('/login', renderLogin);
+app.post('/login', handleLogin);
 
-app.get('/logout', handleLogout)
+app.get('/logout', handleLogout);
 
-app.use(auth)
+app.use(auth);
 
-app.get('/service-request', (req, res) => {
-  const { loggedInUser } = req
-  res.render('service-request', { loggedInUser })
-})
+app.get('/service-request', renderServiceRequest);
+app.post('/service-request', handleServiceRequest);
+
+app.get('/admin', adminAuth, renderAdminDashboard);
 
 app.get('*', (req, res) => {
   res.status(404).send('Not Found')

@@ -2,4 +2,62 @@
 
 <h1>Handyman.ca Service Request</h1>
 
+<% if(locals.errorMessage) { %>
+<p class="error-msg"> <%= locals.errorMessage %></p>
+<% } %>
+
+<form action="/service-request" method="POST">
+	<h2>Service Details</h2>
+	<section class="input-group">
+		<label for="service-type">What type of service you want?</label>
+		<select name="serviceType" id="service-type" required>
+			<option>plumbing</option>
+			<option>electrical</option>
+			<option>painting</option>
+			<option>carpentry</option>
+			<option>general repairs</option>
+		</select>
+	</section>
+
+	<section class="input-group">
+		<label for="service-date">When do you need this service?</label>
+		<input type="date" name="serviceDate" id="service-date" min="2023-08-29" max="2023-11-29" required>
+	</section>
+
+	<section class="input-group">
+		<label for="service-description">Describe what needs to be done (optional)</label>
+		<textarea name="serviceDescription" id="service-description" cols="30" rows="10"></textarea>
+	</section>
+
+	<hr>
+	<h2>Request For Someone Else</h2>
+
+	<section class="input-group">
+		<span>Are you requesting this for someone else? </span>
+		<input type="radio" name="requesterCreator" id="requester-is-creator-yes">
+		<label for="requester-is-creator-yes">Yes</label>
+
+		<input type="radio" name="requesterCreator" id="requester-is-creator-no" checked>
+		<label for="requester-is-creator-no">No</label>
+	</section>
+
+	<section class="input-group">
+		<label for="requester-name">Name</label>
+		<input id="requester-name" name="requesterName">
+	</section>
+
+	<section class="input-group">
+		<label for="requester-contact">Contact No.</label>
+		<input id="requester-contact" name="requesterContact">
+	</section>
+
+	<section class="input-group">
+		<label for="requester-address">Where will this service performed
+			(Address)</label>
+		<input id="requester-address" name="requesterAddress">
+	</section>
+
+	<input type="submit" value="Create Request">
+</form>
+
 <%- include('footer') %>

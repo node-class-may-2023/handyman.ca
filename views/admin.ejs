@@ -1,0 +1,43 @@
+<%- include('header') %>
+
+<table>
+	<tr>
+		<th>id</th>
+		<th>Service Type</th>
+		<th>Requested On</th>
+		<th>Description</th>
+		<th>User Name</th>
+		<th>User Phone</th>
+		<th>User Address</th>
+		<th>Status</th>
+		<th>Cost</th>
+		<th>Created On</th>
+		<th>Updated On</th>
+		<th>Assigned To</th>
+		<th>Actions</th>
+	</tr>
+	<% for( let i = 0; i < serviceRequests.length; i++ ) { %>
+	<tr>
+		<td><%= serviceRequests[i]._id %></td>
+		<td><%= serviceRequests[i].type %></td>
+		<td><%= serviceRequests[i].requestedOn %></td>
+		<td><%= serviceRequests[i].description %></td>
+		<td><%= serviceRequests[i].user.firstName %></td>
+		<td><%= serviceRequests[i].user.phoneNumber %></td>
+		<td><%= serviceRequests[i].user.address %></td>
+		<td><%= serviceRequests[i].status %></td>
+		<td><%= serviceRequests[i].cost %></td>
+		<td><%= serviceRequests[i].createdOn %></td>
+		<td><%= serviceRequests[i].updatedOn %></td>
+		<td></td>
+		<td>
+			<button>Edit</button>
+			<button>Delete</button>
+		</td>
+	</tr>
+	<% } %>
+</table>
+
+
+
+<%- include('footer') %>
