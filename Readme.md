@@ -2,7 +2,7 @@
 
 - Initialize npm package
 
-```bash
+```ps
 npm init -y
 ```
 
